@@ -3,6 +3,7 @@ package SEP6_Spring.demo.Entities;
 public class User {
 
     private int userId;
+
     private String userName;
     private String password;
     private String email;
@@ -12,6 +13,10 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.email = email;
+    }
+
+    public User(int userId) {
+        this.userId = userId;
     }
 
     public int getUserId() {
