@@ -32,7 +32,7 @@ public class DemoApplication {
 		if(e != null) {
 			System.out.println(e.getUserName() + " "
 					+ e.getPassword() + " "
-					+ e.getEmail());
+					+ e.getEmail() + " " + e.getUserId());
 		} else
 			System.out.println("Incorrect username or password");
 

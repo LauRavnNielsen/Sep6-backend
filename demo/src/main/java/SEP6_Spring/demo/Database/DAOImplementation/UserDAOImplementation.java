@@ -46,6 +46,7 @@ public class UserDAOImplementation implements UserDAOInterface {
      while(resultSet.next())
      {
         check = true;
+        user.setUserId(resultSet.getInt("userId"));
          user.setUserName(resultSet.getString("userName"));
          user.setPassword(resultSet.getString("password"));
          user.setEmail(resultSet.getString("email"));
