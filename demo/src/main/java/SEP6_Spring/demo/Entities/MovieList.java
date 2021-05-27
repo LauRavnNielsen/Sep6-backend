@@ -12,6 +12,9 @@ public class MovieList {
         this.listName = listName;
     }
 
+    public MovieList() {
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -34,5 +37,14 @@ public class MovieList {
 
     public void setListName(String listName) {
         this.listName = listName;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieList{" +
+                "userId=" + userId +
+                ", movieListId=" + movieListId +
+                ", listName='" + listName + '\'' +
+                '}';
     }
 }

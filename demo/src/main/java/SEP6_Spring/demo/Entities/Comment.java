@@ -15,6 +15,9 @@ public class Comment {
         this.comment = comment;
     }
 
+    public Comment() {
+    }
+
     public int getUserID() {
         return userID;
     }
@@ -45,5 +48,15 @@ public class Comment {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "userID=" + userID +
+                ", commentId=" + commentId +
+                ", movieId=" + movieId +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 }

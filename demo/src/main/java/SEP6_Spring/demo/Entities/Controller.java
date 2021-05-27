@@ -14,6 +14,9 @@ public class Controller {
         this.row = row;
     }
 
+    public Controller() {
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -44,5 +47,15 @@ public class Controller {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    @Override
+    public String toString() {
+        return "Controller{" +
+                "userId=" + userId +
+                ", movieListId=" + movieListId +
+                ", movieId=" + movieId +
+                ", row=" + row +
+                '}';
     }
 }

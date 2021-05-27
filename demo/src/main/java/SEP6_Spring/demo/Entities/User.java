@@ -15,6 +15,9 @@ public class User {
         this.email = email;
     }
 
+    public User() {
+    }
+
     public User(int userId) {
         this.userId = userId;
     }
@@ -51,4 +54,13 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

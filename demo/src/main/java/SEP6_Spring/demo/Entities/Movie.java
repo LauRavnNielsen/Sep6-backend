@@ -24,6 +24,9 @@ public class Movie {
         this.imdbRating = imdbRating;
     }
 
+    public Movie() {
+    }
+
     public int getMovieId() {
         return movieId;
     }
@@ -84,7 +87,22 @@ public class Movie {
         return imdbRating;
     }
 
-    public void setImdbRating(int imdbRating) {
+
+    public void setImdbRating(float imdbRating) {
         this.imdbRating = imdbRating;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "movieId=" + movieId +
+                ", movieApiId='" + movieApiId + '\'' +
+                ", movieName='" + movieName + '\'' +
+                ", directorName='" + directorName + '\'' +
+                ", genre='" + genre + '\'' +
+                ", description='" + description + '\'' +
+                ", year=" + year +
+                ", imdbRating=" + imdbRating +
+                '}';
     }
 }

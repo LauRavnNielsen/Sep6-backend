@@ -15,6 +15,9 @@ public class Rate {
         this.rating = rating;
     }
 
+    public Rate() {
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -45,5 +48,15 @@ public class Rate {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    @Override
+    public String toString() {
+        return "Rate{" +
+                "userId=" + userId +
+                ", rateId=" + rateId +
+                ", movieId=" + movieId +
+                ", rating=" + rating +
+                '}';
     }
 }
