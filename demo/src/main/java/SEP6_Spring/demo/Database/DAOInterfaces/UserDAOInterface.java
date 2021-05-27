@@ -9,4 +9,6 @@ public interface UserDAOInterface {
     int Registry(User user) throws SQLException;
 
     User LogIn(String userName, String password) throws SQLException;
+
+    public void Delete(int id) throws SQLException;
 }

@@ -65,4 +65,14 @@ public class UserDAOImplementation implements UserDAOInterface {
 
 
     }
+
+    @Override
+    public void Delete(int id) throws SQLException {
+        String query = "DELETE FROM user WHERE userId = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+    }
 }
