@@ -6,7 +6,7 @@ public class Movie {
 
     private int movieId;
 
-    private String movieApiId;
+    private String movieAPIId;
 
     private String movieName;
     private String director;
@@ -16,9 +16,9 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int movieId, String movieApiId, String movieName, String director, int year) {
+    public Movie(int movieId, String movieAPIId, String movieName, String director, int year) {
         this.movieId = movieId;
-        this.movieApiId = movieApiId;
+        this.movieAPIId = movieAPIId;
         this.movieName = movieName;
         this.director = director;
         this.year = year;
@@ -26,7 +26,7 @@ public class Movie {
 
 
     public Movie(MovieEntity movieEntity) {
-        this.movieApiId = movieEntity.getImdbId();
+        this.movieAPIId = movieEntity.getImdbId();
         this.movieName = movieEntity.getTitle();
         this.director = movieEntity.getDirector();
         this.year = movieEntity.getYear();
@@ -43,11 +43,11 @@ public class Movie {
     }
 
     public String getMovieApiId() {
-        return movieApiId;
+        return movieAPIId;
     }
 
     public void setMovieApiId(String movieApiId) {
-        this.movieApiId = movieApiId;
+        this.movieAPIId = movieApiId;
     }
 
     public String getMovieName() {
@@ -78,7 +78,7 @@ public class Movie {
     public String toString() {
         return "Movie{" +
                 "movieId=" + movieId +
-                ", movieApiId='" + movieApiId + '\'' +
+                ", movieApiId='" + movieAPIId + '\'' +
                 ", movieName='" + movieName + '\'' +
                 ", director='" + director + '\'' +
                 ", year=" + year +

@@ -18,6 +18,8 @@ public class CommentDAOImplementation implements DAOCommentInterface {
 
     MovieAPI movieAPI = new MovieAPI();
 
+    MovieDAOImplementation movieDAOImplementation = new MovieDAOImplementation();
+
     @Override
     public int AddCommentToMovie(Comment comment, String movieNameGiven, String userName) throws SQLException {
 
@@ -42,10 +44,10 @@ public class CommentDAOImplementation implements DAOCommentInterface {
         if(movieExists == true)
         {
 
-            String query2 = "INSERT INTO comment1(IDmovie, " + "UserNamePK, " + "comment) VALUES ((SELECT movieId FROM movie WHERE movieName = ?)" +
+            String commentQuery = "INSERT INTO comment1(IDmovie, " + "UserNamePK, " + "comment) VALUES ((SELECT movieId FROM movie WHERE movieName = ?)" +
                     ", (SELECT userName FROM user WHERE userName = ?), ?)";
 
-            PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
+            PreparedStatement preparedStatement2 = connection.prepareStatement(commentQuery);
 
             preparedStatement2.setString(1,movieNameGiven); //should be string
             preparedStatement2.setString(2,userName);
@@ -57,21 +59,33 @@ public class CommentDAOImplementation implements DAOCommentInterface {
 
         }else
         {
-            //API shit
+            //API  CALL
             Movie movie = new Movie();
             try {
                movie = movieAPI.getMovieInfoFromAPI(movieNameGiven);
 
-               String isertQuery = "";
+                System.out.println("Debug movie api: " + movie.toString());
+
+               movieDAOImplementation.addMovie(movie);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            String commentQuery = "INSERT INTO comment1(IDmovie, " + "UserNamePK, " + "comment) VALUES ((SELECT movieId FROM movie WHERE movieName = ?)" +
+                    ", (SELECT userName FROM user WHERE userName = ?), ?)";
+
+            PreparedStatement preparedStatement2 = connection.prepareStatement(commentQuery);
+
+            preparedStatement2.setString(1,movieNameGiven); //should be string
+            preparedStatement2.setString(2,userName);
+            preparedStatement2.setString(3,comment.getComment());
 
 
-            String query3 = "";
-            return 0;
+
+            int n = preparedStatement2.executeUpdate();
+
+            return n;
         }
 
 

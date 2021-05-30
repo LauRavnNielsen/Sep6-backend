@@ -8,7 +8,7 @@ public class Rate {
 
     private float rating;
 
-    public Rate(int userId, int rateId, int movieId, int rating) {
+    public Rate(int userId, int rateId, int movieId, float rating) {
         this.userId = userId;
         this.rateId = rateId;
         this.movieId = movieId;
@@ -46,7 +46,7 @@ public class Rate {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

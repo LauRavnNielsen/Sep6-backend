@@ -19,7 +19,7 @@ public class MovieListDDAOImplementation implements DAOMovieListInterface {
 
 
 
-        String query = "INSERT INTO user(pkUserName, " + "listName) VALUES (?, ?)";
+        String query = "INSERT INTO movieList(pkUserName, " + "listName) VALUES ((SELECT userName FROM user WHERE userName = ?), ?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
 
         preparedStatement.setString(1,username);
