@@ -30,25 +30,6 @@ public class ControllerController {
         return services.GetAllMovieForMovieList(userName,listName);
     }
 
-    /*
-    @PostMapping("/user/Register")
-    public void Register(String userName, String password, String email) throws SQLException {
 
-
-        User user = new User();
-        user.setUserName(userName);
-        user.setPassword(password);
-        user.setEmail(email);
-
-        services.Registry(user);
-        System.out.println("Debug user object: " + user.toString());
-    }
-
-    @GetMapping("/user/Login")
-    public Boolean LogIn(String userName, String password) throws SQLException
-    {
-        return services.LogIn(userName,password);
-    }
-     */
 
 }
