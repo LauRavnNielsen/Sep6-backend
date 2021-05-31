@@ -15,6 +15,10 @@ public class MovieList {
     public MovieList() {
     }
 
+    public MovieList(String listName) {
+        this.listName = listName;
+    }
+
     public int getUserId() {
         return userId;
     }

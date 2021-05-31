@@ -4,11 +4,13 @@ package com.example.restservice.Database.DAOImplementation;
 import com.example.restservice.Database.DAOInterfaces.MovieDAOInterface;
 import com.example.restservice.Database.DatabaseConnection.LocalDBConnection;
 import com.example.restservice.Entities.Movie;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Service
 public class MovieDAOImplementation implements MovieDAOInterface {
 
     Connection connection = LocalDBConnection.getConnection();

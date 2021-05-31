@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DAOControllerInterface {
 
-    int AddMovieToMovieList(Controller controller, String movieName, String userName) throws SQLException;
+    int AddMovieToMovieList(Controller controller, String movieName, String userName, String listName) throws SQLException;
 
     List<Movie> GetAllMovieForMovieList(String userName, String listName) throws SQLException;
 

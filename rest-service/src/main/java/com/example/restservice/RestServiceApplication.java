@@ -28,8 +28,7 @@ public class RestServiceApplication {
 
 
 
-		Controller controller = new Controller();
-		controller.setRow(4);
+
 
 
 
@@ -37,17 +36,30 @@ public class RestServiceApplication {
 		//controllerDAOImplementation.AddMovieToMovieList(controller,"It","admin");
 		List<Movie> movieList = controllerDAOImplementation.GetAllMovieForMovieList("admin","hate");
 
-		System.out.println("Debug movieList: " + movieList);
+		//System.out.println("Debug movieList: " + movieList);
+
+		CommentDAOImplementation commentDAOImplementation = new CommentDAOImplementation();
+
+		List<Comment> commentList = commentDAOImplementation.GetAllCommentsForMovie("lol");
+
+		System.out.println("Debug commentList: " + commentList);
+
+
+	/*	Rate rate = new Rate();
+		rate.setRating(9.0f);
+
+		RateDAOImplementation rateDAOImplementation = new RateDAOImplementation();
+	//	Float number = rateDAOImplementation.getRatingOnMovie("Lau","Aladin");
+
+		//System.out.println("Debug getting rate: " + number);
+
+		rateDAOImplementation.addRatingToMovie(rate, "KingKong","tomi");
+
+	 */
 
 
 
 
-		/*User user = new User();
-		user.setUserName("admin");
-		user.setPassword("123456");
-		user.setEmail("test@gmail.com");
-
-		UserDAOImplementation userDao = new UserDAOImplementation();
 
 		Comment comment = new Comment();
 		comment.setComment("Thresh.");
@@ -57,26 +69,16 @@ public class RestServiceApplication {
 
 		//Add Comment to movie
 
-		commentDAo.AddCommentToMovie(comment,"lol","admin");
+		commentDAo.AddCommentToMovie(comment,"Nemo","admin");
 
 		//Register user to the database
 		//	userDao.Registry(user);
 
 		//Login Test with correct given info and without
-		boolean e = userDao.LogIn("admin","123456");
-		boolean f = userDao.LogIn("admin","12345");
 
-		if(e == true) {
-			System.out.println("Access granted");
-		} else
-			System.out.println("Incorrect username or password");
 
-		if(f == true) {
-			System.out.println("Access granted");
-		} else
-			System.out.println("Incorrect username or password");
 
-		 */
+
 	}
 
 

@@ -5,6 +5,7 @@ import com.example.restservice.Database.DAOInterfaces.DAORateInterface;
 import com.example.restservice.Database.DatabaseConnection.LocalDBConnection;
 import com.example.restservice.Entities.Movie;
 import com.example.restservice.Entities.Rate;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+@Service
 public class RateDAOImplementation implements DAORateInterface {
 
     Connection connection = LocalDBConnection.getConnection();
@@ -21,7 +24,7 @@ public class RateDAOImplementation implements DAORateInterface {
     MovieDAOImplementation movieDAOImplementation = new MovieDAOImplementation();
 
     @Override
-    public int AddRatingToMovie(Rate rate, String movieName, String username) throws SQLException {
+    public int addRatingToMovie(Rate rate, String movieName, String username) throws SQLException {
 
         String query = "SELECT * FROM movie WHERE movieName = ?";
 
@@ -43,14 +46,16 @@ public class RateDAOImplementation implements DAORateInterface {
 
         if(movieExists == true)
         {
-            String rateQuery = "INSERT INTO rate(movieId, " + "userName, " + "rating) " +
-                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movieList WHERE pkUserName = ?), ?)";
+            String rateQuery1 = "INSERT INTO rate(movieId, " + "userName, " + "rating) " +
+                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT userName FROM user WHERE userName = ?), ?)";
 
-            PreparedStatement preparedStatement2 = connection.prepareStatement(rateQuery);
+            PreparedStatement preparedStatement2 = connection.prepareStatement(rateQuery1);
 
             preparedStatement2.setString(1,movieName);
             preparedStatement2.setString(2,username);
             preparedStatement2.setFloat(3,rate.getRating());
+
+            System.out.println("DEBUG userName: " + username);
 
             int n = preparedStatement2.executeUpdate();
 
@@ -87,5 +92,28 @@ public class RateDAOImplementation implements DAORateInterface {
 
 
 
+    }
+
+    @Override
+    public float getRatingOnMovie(String userName, String movieName) throws SQLException {
+
+        String rateQuery = "SELECT rating " +
+                "FROM rate " +
+                "WHERE rate.userName = ? AND movieId = (SELECT movieId FROM movie WHere movieName = ?)";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(rateQuery);
+
+        preparedStatement.setString(1,userName);
+        preparedStatement.setString(2,movieName);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Float number = 0f;
+
+        while (resultSet.next())
+        {
+            number = resultSet.getFloat("rating");
+        }
+
+        return number;
     }
 }

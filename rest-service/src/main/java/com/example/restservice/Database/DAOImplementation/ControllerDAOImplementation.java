@@ -5,6 +5,7 @@ import com.example.restservice.Database.DAOInterfaces.DAOControllerInterface;
 import com.example.restservice.Database.DatabaseConnection.LocalDBConnection;
 import com.example.restservice.Entities.Controller;
 import com.example.restservice.Entities.Movie;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -14,6 +15,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ControllerDAOImplementation implements DAOControllerInterface {
 
 
@@ -24,7 +26,7 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
     MovieDAOImplementation movieDAOImplementation = new MovieDAOImplementation();
 
     @Override
-    public int AddMovieToMovieList(Controller controller, String movieName, String userName) throws SQLException {
+    public int AddMovieToMovieList(Controller controller, String movieName, String userName, String listName) throws SQLException {
 
         String query = "SELECT * FROM movie WHERE movieName = ?";
 
@@ -51,13 +53,14 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
 
             String createControllerQuery = "INSERT INTO controller(movieIdNumber, " +
                     "movieListId, " + "row1) " +
-                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movieList WHERE pkUserName = ?), ?)";
+                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movies.movieList WHERE pkUserName = ? AND listName = ?), ?)";
 
             PreparedStatement preparedStatement2 = connection.prepareStatement(createControllerQuery);
 
             preparedStatement2.setString(1, movieName);
             preparedStatement2.setString(2, userName);
-            preparedStatement2.setInt(3, controller.getRow());
+            preparedStatement2.setString(3,listName);
+            preparedStatement2.setInt(4, controller.getRow());
 
             int n = preparedStatement2.executeUpdate();
             return n;
@@ -78,12 +81,13 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
 
             String createControllerQuery = "INSERT INTO controller(movieIdNumber, " +
                     "movieListId, " + "row1) " +
-                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movieList WHERE pkUserName = ?), ?)";
+                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movieList WHERE pkUserName = ? AND listName = ?), ?)";
 
             PreparedStatement preparedStatement2 = connection.prepareStatement(createControllerQuery);
             preparedStatement2.setString(1, movieName);
             preparedStatement2.setString(2, userName);
-            preparedStatement2.setInt(3, controller.getRow());
+            preparedStatement2.setString(3,listName);
+            preparedStatement2.setInt(4, controller.getRow());
 
             int n = preparedStatement2.executeUpdate();
             return n;
@@ -91,6 +95,7 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
 
 
     }
+
 
     @Override
     public List<Movie> GetAllMovieForMovieList(String userName, String listName) throws SQLException {
@@ -111,15 +116,13 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         List<Movie> movieList = new ArrayList<>();
-        Movie movie = new Movie();
+
 
         while(resultSet.next())
         {
-            movie.setMovieName(resultSet.getString("movieName"));
-            movie.setDirector(resultSet.getString("director"));
-            movie.setYear(resultSet.getInt("year"));
 
-            movieList.add(movie);
+
+            movieList.add(new Movie(resultSet.getString("movieName"),resultSet.getString("director"),resultSet.getInt("year")));
         }
 
 
@@ -131,4 +134,6 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
     public void DeleteMovieFromList(String movieName) throws SQLException {
 
     }
+
+
 }

@@ -6,5 +6,7 @@ import java.sql.SQLException;
 
 public interface DAORateInterface {
 
-    int AddRatingToMovie(Rate rate, String movieName, String username) throws SQLException;
+    int addRatingToMovie(Rate rate, String movieName, String username) throws SQLException;
+
+    float getRatingOnMovie(String userName, String movieName) throws  SQLException;
 }

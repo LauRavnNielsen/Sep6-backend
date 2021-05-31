@@ -32,7 +32,11 @@ public class Movie {
         this.year = movieEntity.getYear();
     }
 
-
+    public Movie(String movieName, String director, int year) {
+        this.movieName = movieName;
+        this.director = director;
+        this.year = year;
+    }
 
     public int getMovieId() {
         return movieId;

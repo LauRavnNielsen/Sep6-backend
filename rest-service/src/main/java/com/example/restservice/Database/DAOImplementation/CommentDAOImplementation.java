@@ -5,13 +5,17 @@ import com.example.restservice.Database.DAOInterfaces.DAOCommentInterface;
 import com.example.restservice.Database.DatabaseConnection.LocalDBConnection;
 import com.example.restservice.Entities.Comment;
 import com.example.restservice.Entities.Movie;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class CommentDAOImplementation implements DAOCommentInterface {
 
     Connection connection = LocalDBConnection.getConnection();
@@ -90,6 +94,36 @@ public class CommentDAOImplementation implements DAOCommentInterface {
 
 
 
+    }
+
+    @Override
+    public List<Comment> GetAllCommentsForMovie(String movieName) throws SQLException {
+
+        String commentsOnMovieQuery = "SELECT comment, userNamePK " +
+                "FROM comment1 " +
+                "WHERE comment1.IDmovie = ( SELECT movieId FROM movie WHERE movie.movieName = ?)  " +
+                "ORDER BY comment1.commentId";
+
+        PreparedStatement  preparedStatement = connection.prepareStatement(commentsOnMovieQuery);
+
+        preparedStatement.setString(1,movieName);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Comment> commentList = new ArrayList<>();
+
+
+        while(resultSet.next())
+        {
+
+
+            commentList.add(new Comment(resultSet.getString("userNamePK"), resultSet.getString("comment")));
+
+
+        }
+        System.out.println("DEBUG comment: " + commentList);
+
+        return commentList;
     }
 
     @Override

@@ -2,13 +2,13 @@ package com.example.restservice.Entities;
 
 public class Comment {
 
-    private int userID;
+    private String userID;
     private int commentId;
     private int movieId;
 
     private String comment;
 
-    public Comment(int userID, int commentId, int movieId, String comment) {
+    public Comment(String userID, int commentId, int movieId, String comment) {
         this.userID = userID;
         this.commentId = commentId;
         this.movieId = movieId;
@@ -18,11 +18,20 @@ public class Comment {
     public Comment() {
     }
 
-    public int getUserID() {
+    public Comment(String comment) {
+        this.comment = comment;
+    }
+
+    public Comment(String userID, String comment) {
+        this.userID = userID;
+        this.comment = comment;
+    }
+
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
