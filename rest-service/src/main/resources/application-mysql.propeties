@@ -1,0 +1,7 @@
+##CLOUD-SQL-CONFIGURATIONS
+spring.cloud.appId=sample-gcp-project
+spring.cloud.gcp.sql.instance-connection-name=sep6-314408:europe-west3:sep6mysql
+spring.cloud.gcp.sql.database-name=inventory
+#SQL DB USERNAME/PASSWORD
+spring.datasource.username=root
+spring.datasource.password=pwAEa20vt88zxy5a!xD
