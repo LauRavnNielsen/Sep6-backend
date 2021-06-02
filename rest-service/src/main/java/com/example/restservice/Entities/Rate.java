@@ -2,28 +2,28 @@ package com.example.restservice.Entities;
 
 public class Rate {
 
-    private int userId;
+    private String userName;
     private int rateId;
     private int movieId;
 
     private float rating;
 
-    public Rate(int userId, int rateId, int movieId, float rating) {
-        this.userId = userId;
+    public Rate() {
+    }
+
+    public Rate(String userName, int rateId, int movieId, float rating) {
+        this.userName = userName;
         this.rateId = rateId;
         this.movieId = movieId;
         this.rating = rating;
     }
 
-    public Rate() {
+    public String getUserName() {
+        return userName;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getRateId() {
@@ -53,7 +53,7 @@ public class Rate {
     @Override
     public String toString() {
         return "Rate{" +
-                "userId=" + userId +
+                "userName='" + userName + '\'' +
                 ", rateId=" + rateId +
                 ", movieId=" + movieId +
                 ", rating=" + rating +

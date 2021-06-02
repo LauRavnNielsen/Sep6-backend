@@ -1,13 +1,13 @@
 package com.example.restservice.Entities;
 
 public class MovieList {
-    private int userId;
+    private String userName;
     private int movieListId;
 
     private String listName;
 
-    public MovieList(int userId, int movieListId, String listName) {
-        this.userId = userId;
+    public MovieList(String userName, int movieListId, String listName) {
+        this.userName = userName;
         this.movieListId = movieListId;
         this.listName = listName;
     }
@@ -19,12 +19,12 @@ public class MovieList {
         this.listName = listName;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getMovieListId() {
@@ -46,7 +46,7 @@ public class MovieList {
     @Override
     public String toString() {
         return "MovieList{" +
-                "userId=" + userId +
+                "userName=" + userName +
                 ", movieListId=" + movieListId +
                 ", listName='" + listName + '\'' +
                 '}';

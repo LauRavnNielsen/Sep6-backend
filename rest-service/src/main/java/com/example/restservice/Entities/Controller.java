@@ -1,14 +1,14 @@
 package com.example.restservice.Entities;
 
 public class Controller {
-    private int userId;
+
     private int movieListId;
     private int movieId;
 
     private int row;
 
-    public Controller(int userId, int movieListId, int movieId, int row) {
-        this.userId = userId;
+    public Controller( int movieListId, int movieId, int row) {
+
         this.movieListId = movieListId;
         this.movieId = movieId;
         this.row = row;
@@ -17,13 +17,7 @@ public class Controller {
     public Controller() {
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public int getMovieListId() {
         return movieListId;
@@ -52,7 +46,6 @@ public class Controller {
     @Override
     public String toString() {
         return "Controller{" +
-                "userId=" + userId +
                 ", movieListId=" + movieListId +
                 ", movieId=" + movieId +
                 ", row=" + row +

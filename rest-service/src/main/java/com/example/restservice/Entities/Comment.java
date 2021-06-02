@@ -2,14 +2,14 @@ package com.example.restservice.Entities;
 
 public class Comment {
 
-    private String userID;
+    private String userName;
     private int commentId;
     private int movieId;
 
     private String comment;
 
     public Comment(String userID, int commentId, int movieId, String comment) {
-        this.userID = userID;
+        this.userName = userID;
         this.commentId = commentId;
         this.movieId = movieId;
         this.comment = comment;
@@ -23,16 +23,16 @@ public class Comment {
     }
 
     public Comment(String userID, String comment) {
-        this.userID = userID;
+        this.userName = userID;
         this.comment = comment;
     }
 
     public String getUserID() {
-        return userID;
+        return userName;
     }
 
     public void setUserID(String userID) {
-        this.userID = userID;
+        this.userName = userID;
     }
 
     public int getCommentId() {
@@ -62,7 +62,7 @@ public class Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                "userID=" + userID +
+                "userID=" + userName +
                 ", commentId=" + commentId +
                 ", movieId=" + movieId +
                 ", comment='" + comment + '\'' +

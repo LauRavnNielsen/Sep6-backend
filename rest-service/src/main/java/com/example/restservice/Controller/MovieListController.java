@@ -1,7 +1,6 @@
 package com.example.restservice.Controller;
 
-import com.example.restservice.Database.DAOImplementation.MovieDAOImplementation;
-import com.example.restservice.Database.DAOImplementation.MovieListDDAOImplementation;
+import com.example.restservice.Database.DAOImplementation.MovieListDAOImplementation;
 import com.example.restservice.Entities.MovieList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,7 @@ import java.util.List;
 public class MovieListController {
 
     @Autowired
-    MovieListDDAOImplementation services;
+    MovieListDAOImplementation services;
 
     @PostMapping("/movieList/AddMovieList")
     public void addMovieList(String listName, String userName) throws SQLException {

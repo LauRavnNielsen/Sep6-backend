@@ -4,7 +4,7 @@ import com.example.restservice.Entities.User;
 
 import java.sql.SQLException;
 
-public interface UserDAOInterface {
+public interface DAOUserInterface {
 
     int Registry(User user) throws SQLException;
 

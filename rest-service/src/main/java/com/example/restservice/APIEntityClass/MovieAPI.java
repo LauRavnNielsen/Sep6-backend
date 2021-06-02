@@ -4,14 +4,9 @@ package com.example.restservice.APIEntityClass;
 import com.example.restservice.Database.DAOImplementation.MovieDAOImplementation;
 import com.example.restservice.Entities.Movie;
 import com.google.gson.Gson;
-import com.mysql.cj.xdevapi.JsonParser;
-import org.apache.tomcat.util.json.JSONParser;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.print.DocFlavor;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 

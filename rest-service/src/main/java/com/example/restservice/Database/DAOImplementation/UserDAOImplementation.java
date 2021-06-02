@@ -2,7 +2,7 @@ package com.example.restservice.Database.DAOImplementation;
 
 
 
-import com.example.restservice.Database.DAOInterfaces.UserDAOInterface;
+import com.example.restservice.Database.DAOInterfaces.DAOUserInterface;
 import com.example.restservice.Database.DatabaseConnection.LocalDBConnection;
 import com.example.restservice.Entities.User;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Service
-public class UserDAOImplementation implements UserDAOInterface {
+public class UserDAOImplementation implements DAOUserInterface {
 
 
     static Connection connection = LocalDBConnection.getConnection();

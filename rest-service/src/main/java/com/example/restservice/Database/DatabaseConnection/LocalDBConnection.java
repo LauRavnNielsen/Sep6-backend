@@ -10,7 +10,7 @@ public class LocalDBConnection {
 
     static
     {
-        String url = "jdbc:mysql://35.198.181.70:3306/SEP6";
+        String url = "jdbc:mysql://localhost:3306/movies";
         String user = "root";
         String password = "pwAEa20vt88zxy5a!xD";
         try
