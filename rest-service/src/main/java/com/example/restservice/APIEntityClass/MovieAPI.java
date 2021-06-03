@@ -8,6 +8,8 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 
@@ -21,7 +23,8 @@ public class MovieAPI {
 
     public Movie getMovieInfoFromAPI(String movieName) throws IOException {
 
-        URL url = new URL(baseUrl + "t=" + movieName + "&apikey=" + apiKey);
+        String movieEncoded = URLEncoder.encode(movieName, StandardCharsets.UTF_8.toString());
+        URL url = new URL(baseUrl + "t=" + movieEncoded + "&apikey=" + apiKey);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         con.setRequestMethod("GET");
