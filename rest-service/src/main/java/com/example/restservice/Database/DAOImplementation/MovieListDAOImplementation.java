@@ -36,7 +36,7 @@ public class MovieListDAOImplementation implements DAOMovieListInterface {
     public List<MovieList> getMovieList(String userName) throws SQLException {
 
         String getMovieListsQuery = "SELECT listName " +
-                "FROM movies.movielist " +
+                "FROM movieList " +
                 "WHERE pkUserName = ? " +
                 "ORDER BY movieListId;";
 

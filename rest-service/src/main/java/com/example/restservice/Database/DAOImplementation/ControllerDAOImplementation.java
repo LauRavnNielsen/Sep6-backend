@@ -53,7 +53,7 @@ public class ControllerDAOImplementation implements DAOControllerInterface {
 
             String createControllerQuery = "INSERT INTO controller(movieIdNumber, " +
                     "movieListId, " + "row1) " +
-                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movies.movieList WHERE pkUserName = ? AND listName = ?), ?)";
+                    "VALUES ((SELECT movieId FROM movie WHERE movieName = ?), (SELECT movieListId FROM movieList WHERE pkUserName = ? AND listName = ?), ?)";
 
             PreparedStatement preparedStatement2 = connection.prepareStatement(createControllerQuery);
 
