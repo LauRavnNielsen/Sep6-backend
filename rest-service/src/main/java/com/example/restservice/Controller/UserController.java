@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 
 @RestController
+@CrossOrigin
 public class UserController {
 
     @Autowired

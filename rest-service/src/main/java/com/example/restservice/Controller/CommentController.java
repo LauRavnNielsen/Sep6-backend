@@ -3,6 +3,7 @@ package com.example.restservice.Controller;
 import com.example.restservice.Database.DAOImplementation.CommentDAOImplementation;
 import com.example.restservice.Entities.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class CommentController {
 
     @Autowired
